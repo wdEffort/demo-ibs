@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <!-- Base Tiles -->
+    <definition name="base" template="/WEB-INF/tiles/layouts/baseTemplate.jsp">
+        <put-attribute name="title" value="TK Company"/>
+        <put-attribute name="head" value="/WEB-INF/tiles/components/head.jsp"/>
+        <put-attribute name="sidebar" value="/WEB-INF/tiles/components/sidebar.jsp"/>
+        <put-attribute name="nav" value="/WEB-INF/tiles/components/nav.jsp"/>
+        <put-attribute name="body" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/components/footer.jsp"/>
+        <put-attribute name="logout" value="/WEB-INF/tiles/components/logoutModal.jsp"/>
+        <put-attribute name="script" value="/WEB-INF/tiles/components/script.jsp"/>
+    </definition>
+
+    <definition name="*" extends="base">
+        <put-attribute name="body" value="/WEB-INF/views/{1}.jsp"/>
+    </definition>
+
+    <definition name="*/*" extends="base">
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
+    </definition>
+
+    <definition name="*/*/*" extends="base">
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
+    </definition>
+
+    <definition name="*/*/*/*" extends="base">
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}/{4}.jsp"/>
+    </definition>
+
+    <!-- User related Tiles  -->
+    <definition name="user" template="/WEB-INF/tiles/layouts/userLayout.jsp">
+        <put-attribute name="head" value="/WEB-INF/tiles/components/head.jsp"/>
+        <put-attribute name="body" value=""/>
+        <put-attribute name="script" value="/WEB-INF/tiles/components/script.jsp"/>
+    </definition>
+
+    <definition name="user/login" extends="user">
+        <put-attribute name="title" value="로그인|TK Company"/>
+        <put-attribute name="body" value="/WEB-INF/views/site/dashboard/login.jsp"/>
+    </definition>
+
+    <definition name="user/join" extends="user">
+        <put-attribute name="title" value="회원가입|TK Company"/>
+        <put-attribute name="body" value="/WEB-INF/views/site/dashboard/join.jsp"/>
+    </definition>
+
+    <definition name="user/forgotPassword" extends="user">
+        <put-attribute name="title" value="비밀번호 찾기|TK Company"/>
+        <put-attribute name="body" value="/WEB-INF/views/site/dashboard/forgot_password.jsp"/>
+    </definition>
+
+</tiles-definitions>

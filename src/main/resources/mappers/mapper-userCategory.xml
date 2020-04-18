@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="IBSUserCategory">
+    <insert id="IBSInsertOneUserCategory" parameterType="com.ibs.dashboard.user.dto.UserRole">
+        INSERT INTO IBSMEMBROLE (
+            MB_ID,
+            MR_ROLE
+        )
+        VALUES (
+           #{mbId},
+           #{mrRole}
+        )
+    </insert>
+
+    <select id="IBSSelectOneUserCategory" parameterType="java.lang.String" resultType="com.ibs.dashboard.user.dto.UserRole">
+        SELECT
+            MR_IDX,
+            MB_ID,
+            MR_ROLE
+        FROM
+            IBSMEMBROLE
+        WHERE
+            1 = 1
+            AND MB_ID = #{mbId}
+        LIMIT 1
+    </select>
+</mapper>

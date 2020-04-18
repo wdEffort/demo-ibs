@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="IBSUser">
+    <insert id="IBSInsertOneUser" parameterType="com.ibs.dashboard.user.dto.User">
+        INSERT INTO IBSMEMB (
+            MB_ID,
+            MB_PW,
+            MB_NAME,
+            MB_PHONE,
+            MB_EMAIL,
+            MB_STATUS,
+            MB_FRST_DATETIME
+        )
+        VALUES (
+            #{mbId},
+            #{mbPw},
+            #{mbName},
+            #{mbPhone},
+            #{mbEmail},
+            #{mbStatus},
+            NOW()
+        )
+    </insert>
+
+    <select id="IBSSelectOneUser" parameterType="java.lang.String" resultType="com.ibs.dashboard.user.dto.User">
+        SELECT
+            MB_IDX,
+            MB_ID,
+            MB_PW,
+            MB_NAME,
+            MB_PHONE,
+            MB_EMAIL,
+            MB_STATUS,
+            MB_FRST_DATETIME,
+            MB_MODF_DATETIME
+        FROM
+            IBSMEMB
+        WHERE
+            1 = 1
+            AND MB_ID = #{mbId}
+        LIMIT 1
+    </select>
+</mapper>
